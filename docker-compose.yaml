@@ -1,0 +1,19 @@
+services:
+  tests:
+    profiles:
+    - tests
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    command: ["yarn", "test"]
+    volumes:
+      - ./src:/app/src
+  app:
+    build:
+      context: .
+    ports:
+      - 3000:3000
+    command: ["yarn", "start:dev"]
+    volumes:
+      - ./src:/app/src
